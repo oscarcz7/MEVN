@@ -42,9 +42,8 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
-                <strong>Log in</strong>
-              </a>
+              
+              <router-link to="Login" class="button is-primary"> <strong>Log in</strong></router-link>
               <a class="button is-light">
                 <strong>Log Out</strong>
               </a>
@@ -58,10 +57,15 @@
 </template>
 
 <style>
+
+#app {
+  background-color: #d0e8f2;
+  max-height: 100%;
+  max-width: 100%;
+}
 .content{
   text-align: center;
-  background-color: #d0e8f2;
-  padding-top: 50px;
+  
 }
 
 </style>
