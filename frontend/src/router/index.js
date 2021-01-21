@@ -28,6 +28,11 @@ const routes = [
   {
     path: '/contracts',
     name: 'Contracts',
+    component: () => import('../views/Contracts/Create.vue')
+  },
+  {
+    path: '/contracts-review',
+    name: 'ContractsAcquired',
     component: () => import('../views/Contracts/Contracts.vue')
   },
   {
