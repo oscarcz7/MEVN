@@ -14,16 +14,15 @@
           </div>
           <div class="column right has-text-centered">
             <h1 class="title is-4">Login Form</h1>
-            <p class="description">
-              Ready for the Magic!?
-            </p>
-            <form>
+            <p class="description">Ready for the Magic!?</p>
+            <form @submit.prevent="login">
               <div class="field">
                 <div class="control">
                   <input
                     class="input is-medium"
                     type="email"
                     placeholder="Email"
+                    v-model="client.email"
                   />
                 </div>
               </div>
@@ -34,15 +33,19 @@
                     class="input is-medium"
                     type="paswword"
                     placeholder="Password"
+                    v-model="client.password"
                   />
                 </div>
               </div>
-              <button class="button is-block is-primary is-fullwidth is-medium">
+              <button class="button is-block is-primary is-fullwidth is-medium" type="submit">
                 Submit
               </button>
               <br />
               <small><em>New here? Create your account now!</em></small>
             </form>
+            <div  v-if="mensaje != ''">
+              <p>{{ mensaje }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -72,7 +75,6 @@
               </span>
             </div>
           </div>
-          
         </nav>
       </div>
     </div>
@@ -80,8 +82,32 @@
 </template>
 
 <script>
-export default {};
+import {mapActions} from "vuex";
+export default {
+    data() {
+        return {
+            client: {email: '', password: ''},
+            mensaje: ''
+        }
+    },
+    methods: {
+        ...mapActions(['guardarUsuario']),
+        login(){
+            this.axios.post('/login', this.client)
+            .then(res => {
+                console.log(res.data);
+                const token = res.data.token;
+                this.guardarUsuario(token);
+            })
+            .catch(err => {
+                console.log(err.response);
+                this.mensaje = err.response.data.mensaje
+            } )
+        }
+    },
+}
 </script>
+
 
 <style scoped>
 :root {
@@ -167,5 +193,4 @@ input:focus {
   display: flex;
   align-items: center;
 }
-
 </style>

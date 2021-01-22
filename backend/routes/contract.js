@@ -9,6 +9,7 @@ const { verificarAuth, verificarAdmin } = require('../middlewares/autentication'
 //POST NEW CONTRACT IN THE DATABASE
 router.post('/newContract', verificarAuth, async (req, res) => {
   const body = req.body;
+  body.clientID = req.client._id;
   try {
     const contractDB = await Contract.create(body);
     res.status(200).json(contractDB);
@@ -19,6 +20,7 @@ router.post('/newContract', verificarAuth, async (req, res) => {
     })
   }
 });
+
 
 //FIND CONTRACT BY ID
 router.get('/contract/:id',verificarAuth, async (req, res) => {
@@ -36,10 +38,10 @@ router.get('/contract/:id',verificarAuth, async (req, res) => {
 });
 
 /// visualize all contracts Get
-router.get('/contract', verificarAuth, async (req, res) => {
-  const clientID = req.client._id;
+router.get('/contract', async (req, res) => {
+  
   try {
-    const contractDB = await contract.find({ clientID });
+    const contractDB = await contract.find({});
     res.json(contractDB);
   } catch (err) {
     return res.status(400).json({

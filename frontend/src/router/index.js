@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Store from '../store/index'
+import store from '../store/index'
 
 Vue.use(VueRouter)
 
@@ -23,22 +25,32 @@ const routes = [
   {
     path: '/client',
     name: 'Clients',
-    component: () => import('../views/Clients/Clients.vue')
+    component: () => import('../views/Clients/Clients.vue'),
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/new-contract',
+    name: 'Contracts',
+    component: () => import('../views/Contracts/Create.vue'),
+    meta: {requireAuth: true}
   },
   {
     path: '/contracts',
-    name: 'Contracts',
-    component: () => import('../views/Contracts/Create.vue')
+    name: 'AdminContractsAll',
+    component: () => import('../views/Contracts/AdminContractsAll.vue'),
+    meta: {requireAuth: true}
   },
   {
     path: '/contracts-review',
     name: 'ContractsAcquired',
-    component: () => import('../views/Contracts/Contracts.vue')
+    component: () => import('../views/Contracts/Contracts.vue'),
+    meta: {requireAuth: true}
   },
   {
     path: '/reports',
     name: 'Reports',
-    component: () => import('../views/Contracts/Reports.vue')
+    component: () => import('../views/Contracts/Reports.vue'),
+    meta: {requireAuth: true}
   }
 ]
 
@@ -48,4 +60,12 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  const rutaProtegida = to.matched.some(record =>  record.meta.requireAuth)
+  if(rutaProtegida && store.state.token === ''){
+    next({name: 'Login'})
+  }else{
+    next();
+  }
+})
 export default router

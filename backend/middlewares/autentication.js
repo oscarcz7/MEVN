@@ -12,7 +12,7 @@ const verificarAuth = (req, res, next)=>{
         req.client = decoded.data;
         next();
     })
-}
+};
 
 const verificarAdmin= (req, res, next) => {
     const rol = req.client.role;
@@ -20,9 +20,9 @@ const verificarAdmin= (req, res, next) => {
         next();
     }else{
         return res.status(401).json({
-            msg: 'Invalid client'
+            msg: 'Invalid role'
         });
     }
-}
+};
 
 module.exports = {verificarAuth, verificarAdmin}

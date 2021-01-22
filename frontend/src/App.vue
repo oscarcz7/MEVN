@@ -25,28 +25,21 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <router-link to="/" class="navbar-item">Home</router-link>
-          <router-link to="about" class="navbar-item">About</router-link>
-          <router-link to="Contracts" class="navbar-item">Apply for</router-link>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link"> Contracts </a>
-
-            <div class="navbar-dropdown">
-              <router-link to="ContractsAcquire" class="navbar-item">Contracts Resume</router-link>
-              <router-link to="Reports" class="navbar-item">Reports</router-link>
-              
-            </div>
-          </div>
+          <router-link to="/" v-if="!estaActivo" class="navbar-item">Home</router-link>
+          <router-link to="/about"  v-if="!estaActivo" class="navbar-item">About</router-link>
+          <router-link to="/new-contract" v-if="estaActivo" class="navbar-item">Apply for</router-link>
+          <router-link to="/contracts-review" v-if="estaActivo" class="navbar-item">Contracts Resume</router-link>
+          <router-link to="/contracts" v-if="estaActivo" class="navbar-item">Contracts All</router-link>
+          <router-link to="/reports" v-if="estaActivo" class="navbar-item">Reports</router-link>
         </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
               
-              <router-link to="Login" class="button is-primary"> <strong>Log in</strong></router-link>
-              <a class="button is-light">
-                <strong>Log Out</strong>
-              </a>
+              <router-link to="/login" v-if="!estaActivo" class="button is-primary"> <strong>Log in</strong></router-link>
+              <button v-if="estaActivo" @click="cerrarSesion()" class="button is-primary"><strong>Log Out</strong></button>
+              
             </div>
           </div>
         </div>
@@ -56,9 +49,23 @@
   </div>
 </template>
 
+
+<script>
+import { mapActions, mapGetters } from "vuex";
+export default {
+  methods: {
+    ...mapActions(["cerrarSesion", "leerToken"]),
+  },
+  computed: {
+    ...mapGetters(["estaActivo"]),
+  },
+  created() {
+    this.leerToken();
+  },
+};  
+</script>
+
 <style>
-
-
 .content{
   text-align: center;
 }

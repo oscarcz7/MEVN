@@ -11,7 +11,7 @@ router.post('/', async(req, res)=>{
     const body = req.body;
 
     try {
-        const clientDB = await Client.findOne({clientEmail: body.clientEmail})
+        const clientDB = await Client.findOne({email: body.email})
         if(!clientDB){
             return res.status(400).json({
                 msg: 'Email no encontrado'

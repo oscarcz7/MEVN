@@ -48,7 +48,7 @@ export default {
         },
       };
       this.axios
-        .get("/contract", config)
+        .get("/contracts", config)
         .then((res) => {
           console.log(res.data);
           this.contracts = res.data;
