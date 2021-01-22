@@ -58,14 +58,9 @@
 
 <style>
 
-#app {
-  background-color: #d0e8f2;
-  max-height: 100%;
-  max-width: 100%;
-}
+
 .content{
   text-align: center;
-  
 }
 
 </style>
