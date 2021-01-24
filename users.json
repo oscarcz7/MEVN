@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "600cb900517aa6137d2ba4c5"
+  },
+  "role": "USER",
+  "userName": "Supermaxi",
+  "userEmail": "supermaxi@mail.com",
+  "password": "$2b$10$oJ576SJrQIsyleThtj/wjOYWictChi8//Lb/sBQ3/HGhGg1w5aJq2",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "600cbab904160915304314dc"
+  },
+  "role": "USER",
+  "userName": "Udla",
+  "userEmail": "udla@mail.com",
+  "password": "$2b$10$AQ8Y9lANEeYRkXL/BxaE3.xs6zk5R4UI/CRTWMrOS67SqTZhC8i5u",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "600cbb1604160915304314de"
+  },
+  "role": "ADMIN",
+  "userName": "admin",
+  "userEmail": "admin@mail.com",
+  "password": "$2b$10$NE9dTPthtY6vd2txIDgjXe5.mMXZfi1c26ADG0y7HhRXxLP1hVoGm",
+  "__v": 0
+}]

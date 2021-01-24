@@ -1,0 +1,23 @@
+[{
+  "_id": {
+    "$oid": "600cb97b517aa6137d2ba4c6"
+  },
+  "contractDescription": "Iluminarias",
+  "date": {
+    "$date": "2020-11-12T05:00:00Z"
+  },
+  "quantity": 3,
+  "userId": "600cb900517aa6137d2ba4c5",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "600cbaf004160915304314dd"
+  },
+  "contractDescription": "Pagina Web",
+  "date": {
+    "$date": "2020-12-12T05:00:00Z"
+  },
+  "quantity": 7500,
+  "userId": "600cbab904160915304314dc",
+  "__v": 0
+}]
