@@ -22,7 +22,7 @@
                     class="input is-medium"
                     type="email"
                     placeholder="Email"
-                    v-model="client.email"
+                    v-model="user.userEmail"
                   />
                 </div>
               </div>
@@ -33,7 +33,7 @@
                     class="input is-medium"
                     type="paswword"
                     placeholder="Password"
-                    v-model="client.password"
+                    v-model="user.password"
                   />
                 </div>
               </div>
@@ -86,14 +86,14 @@ import {mapActions} from "vuex";
 export default {
     data() {
         return {
-            client: {email: '', password: ''},
+            user: {userEmail: '', password: ''},
             mensaje: ''
         }
     },
     methods: {
         ...mapActions(['guardarUsuario']),
         login(){
-            this.axios.post('/login', this.client)
+            this.axios.post('/login', this.user)
             .then(res => {
                 console.log(res.data);
                 const token = res.data.token;

@@ -10,16 +10,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     token:'',
-    clientDB: '',
+    userDB: '',
     date:''
   },
   mutations: {
     obtenerUsuario(state, payload){
       state.token = payload;
       if(payload === ''){
-        state.clientDB = ''
+        state.userDB = ''
       }else{
-        state.clientDB = decode(payload);
+        state.userDB = decode(payload);
         router.push({name: 'ContractsAcquired'})
       }
     },

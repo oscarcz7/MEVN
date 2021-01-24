@@ -1,22 +1,26 @@
 <template>
+<div class="container">
   <div id="cards" class="row columns is-multiline">
     <div v-for="(item, index) in contracts" :key="index" class="column is-4">
       <div class="card large">
         <div class="card-image">
           <figure class="image is-16by9">
-            <img :src="item.image" alt="Image" />
+            <img alt="Vue logo" src="../../assets/logoS.png">
           </figure>
         </div>
         <div class="card-content">
           <div class="content">
-            <p class="title is-4 no-padding">{{ contract.description }}</p>
-            <p class="subtitle is-6">{{ contract.quantity }}</p>
-            <p class="subtitle is-6">{{ contract.date }}</p>
+            <p class="title is-4 no-padding">{{ item.contractDescription }}</p>
+            <br>
+            <p class="subtitle is-6">{{ item.quantity }}</p>
+            <p class="subtitle is-6">{{ item.date }}</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+  
 </template>
 
 
@@ -48,7 +52,7 @@ export default {
         },
       };
       this.axios
-        .get("/contracts", config)
+        .get("/services", config)
         .then((res) => {
           console.log(res.data);
           this.contracts = res.data;
@@ -61,17 +65,11 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
-
-#card {
+<style scoped>
+.container{
+  padding: 10px;
   background: #071e36;
 }
-
-.box {
-
-  background: #071e36;
-}
-
 
 input::placeholder {
   color: antiquewhite;
