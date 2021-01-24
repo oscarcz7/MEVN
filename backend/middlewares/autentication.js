@@ -6,23 +6,23 @@ const verificarAuth = (req, res, next)=>{
         
         if(err){
             return res.status(401).json({
-                msg: 'Invalid Client'
+                msg: 'Usuario no valido'
             });
         }
-        req.client = decoded.data;
+        req.user = decoded.data;
         next();
     })
-};
+}
 
-const verificarAdmin= (req, res, next) => {
-    const rol = req.client.role;
+const verificarAdministrador = (req, res, next) => {
+    const rol = req.user.role;
     if(rol === 'ADMIN'){
         next();
     }else{
         return res.status(401).json({
-            msg: 'Invalid role'
+            msg: 'Usuario no valido'
         });
     }
-};
+}
 
-module.exports = {verificarAuth, verificarAdmin}
+module.exports = {verificarAuth, verificarAdministrador}
