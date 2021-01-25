@@ -30,7 +30,7 @@ const routes = [
   },
   {
     path: '/new-contract',
-    name: 'Contracts',
+    name: 'NewContract',
     component: () => import('../views/Contracts/Create.vue'),
     meta: {requireAuth: true}
   },
@@ -41,9 +41,9 @@ const routes = [
     meta: {requireAuth: true}
   },
   {
-    path: '/contracts-review',
+    path: '/list-contracts',
     name: 'ContractsAcquired',
-    component: () => import('../views/Contracts/Contracts.vue'),
+    component: () => import('../views/Contracts/ListContracts.vue'),
     meta: {requireAuth: true}
   },
   {

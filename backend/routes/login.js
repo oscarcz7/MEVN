@@ -25,7 +25,7 @@ router.post('/', async(req, res)=>{
         ///generacion de token
         const token = jwt.sign({
             data: userDB
-        }, 'secret' , {expiresIn: 60 * 60 * 24 * 30});
+        }, 'secret' , {expiresIn: 60 * 60});
 
         res.json({
             userDB,

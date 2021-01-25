@@ -28,7 +28,7 @@
           <router-link to="/" v-if="!estaActivo" class="navbar-item">Home</router-link>
           <router-link to="/about"  v-if="!estaActivo" class="navbar-item">About</router-link>
           <router-link to="/new-contract" v-if="estaActivo" class="navbar-item">Apply for</router-link>
-          <router-link to="/contracts-review" v-if="estaActivo" class="navbar-item">Contracts Resume</router-link>
+          <router-link to="/list-contracts" v-if="estaActivo" class="navbar-item">List Details</router-link>
           <router-link to="/contracts" v-if="estaActivo" class="navbar-item">Contracts All</router-link>
           <router-link to="/reports" v-if="estaActivo" class="navbar-item">Reports</router-link>
         </div>
