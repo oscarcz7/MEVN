@@ -11,7 +11,7 @@
       </thead>
       <tbody>
         <tr v-for="(item, index) in contracts" :key="index">
-          <td>{{ item._id }}</td>
+          <td>{{index + 1 }}</td>
           <td>{{ item.contractDescription }}</td>
           <td>{{ item.quantity }}</td>
           <td>{{ item.date }}</td>
@@ -20,8 +20,7 @@
     </table>
 
     <h1>Consultas</h1>
-    <form @submit.prevent="">
-      <div class="columns">
+    <div class="columns">
         <div class="column is-half">
           <label class="label" for="inicio">Desde</label>
           <div class="control">
@@ -36,17 +35,11 @@
         </div>
       </div>
 
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button  is-link" type="submit">Submit</button>
-        </div>
-      </div>
-    </form>
-
     <table class="table mt-5">
       <thead>
         <tr>
           <th>ID</th>
+          <th>ClIENTE</th>
           <th>DESCRIPCION</th>
           <th>MONTO ($)</th>
           <th>FECHA</th>
@@ -54,6 +47,7 @@
       </thead>
       <tbody>
         <tr v-for="(item, index) in contracts" :key="index">
+          <td>{{index + 1}}</td>
           <td>{{ item.userId }}</td>
           <td>{{ item.contractDescription }}</td>
           <td>{{ item.quantity }}</td>
